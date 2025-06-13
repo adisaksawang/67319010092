@@ -1,0 +1,470 @@
+/* From Uiverse.io by marcelodolza */ 
+.container {
+  position: absolute;
+  inset: 0;
+  max-width: 100%;
+  max-height: 1160px;
+}
+.container > * {
+  user-select: none;
+}
+
+.wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wrap input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  z-index: 999;
+  cursor: pointer;
+  pointer-events: all;
+}
+.area {
+  position: absolute;
+  margin: auto;
+  top: 53%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  @media (max-height: 600px) {
+    top: 40%;
+  }
+}
+
+.button {
+  transition: all 0.3s ease;
+  background: transparent;
+  border: 0;
+}
+
+.button svg {
+  display: block;
+  overflow: visible;
+}
+
+.car {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+.car-svg {
+  position: relative;
+  z-index: 2;
+}
+.car .doors {
+  position: absolute;
+  top: -28px;
+  width: 82%;
+  z-index: 1;
+}
+.car .door-l,
+.car .door-r {
+  position: absolute;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.car .door-l {
+  left: 0;
+  transform-origin: top right;
+}
+.car .door-r {
+  right: 0;
+  transform-origin: top left;
+}
+
+.plate {
+  position: absolute;
+  z-index: 4;
+  top: 71px;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  width: 100px;
+  height: 33px;
+  color: rgba(246, 215, 255, 0.7);
+  text-shadow: 0 0 4px black;
+  overflow: hidden;
+}
+
+.plate div {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #423659 0%, #211233 100%);
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 3px rgb(0 0 0 / 40%);
+  transition: all 0.7s cubic-bezier(0.45, 0, 0.55, 1);
+}
+.plate div:nth-child(2) {
+  transform: translateY(105%);
+}
+
+.headlights {
+  position: absolute;
+  width: 69%;
+  left: 0;
+  right: 0;
+  top: 31%;
+  margin: auto;
+  z-index: 3;
+  perspective: 15rem;
+}
+.headlights .headlight-l,
+.headlights .headlight-r {
+  transform-style: preserve-3d;
+  position: absolute;
+}
+.headlights .headlight-l::before,
+.headlights .headlight-r::before,
+.headlights .headlight-l::after,
+.headlights .headlight-r::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 160px;
+  filter: blur(10px);
+  transform: rotateX(48deg) translateY(20px) translateZ(50px);
+}
+.headlights .headlight-l::before,
+.headlights .headlight-r::before {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #00f1ff 0%,
+    transparent 100%
+  );
+}
+.headlights .headlight-l,
+.headlights .headlight-l::before {
+  left: 0;
+}
+.headlights .headlight-r,
+.headlights .headlight-r::before {
+  right: 0;
+}
+.headlights .headlight-l::after {
+  left: 20px;
+}
+.headlights .headlight-r::after {
+  right: 20px;
+}
+.headlights .headlight-l::after,
+.headlights .headlight-r::after {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(255, 0, 93) 0%,
+    transparent 100%
+  );
+}
+.light,
+.headlights {
+  opacity: 0.2;
+  transition: all ease 0.6s;
+}
+
+.ground > .wrap-sunset {
+  transform: rotateX(50deg) scale(-1);
+  top: -20%;
+  opacity: 0.5;
+  @media (max-height: 600px) {
+    opacity: 1;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 20%,
+      #000 30%,
+      transparent 75%
+    );
+    top: 40%;
+    transform: rotateX(30deg) scale(2);
+  }
+}
+
+.mountain {
+  position: absolute;
+  bottom: -3px;
+  z-index: -1;
+  width: auto;
+  @media (max-height: 600px) {
+    height: 25vh;
+  }
+}
+.mountain-r {
+  left: 49.9%;
+}
+.mountain-l {
+  transform: scaleX(-1);
+  right: 49.9%;
+}
+.mountain .back {
+  filter: blur(2px);
+}
+
+.ground-light {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 32%;
+  z-index: 10;
+}
+.ground-light::before,
+.ground-light::after {
+  content: "";
+  position: absolute;
+  width: 24%;
+  height: 3px;
+  background: #ffffff;
+  box-shadow:
+    0 0 10px 2px #00ffa3,
+    0 0 30px 15px #009c7b;
+  transform: scaleX(3);
+}
+.ground-light::before {
+  border-radius: 0 50% 50% 0;
+  left: 0;
+}
+.ground-light::after {
+  border-radius: 50% 0 0 50%;
+  right: 0;
+}
+
+.fog {
+  position: absolute;
+  margin: auto;
+  inset: 0;
+  width: 100%;
+  height: 40vh;
+  min-height: 200px;
+  min-width: 200px;
+  @media (max-height: 600px) {
+    top: -20%;
+  }
+}
+
+.fog::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 10vh;
+  bottom: 0;
+  border-radius: 50%;
+  filter: blur(70px);
+  box-shadow: 0 -100px 10vh #bd46d4;
+}
+
+.wrap-sunset {
+  mask-image: linear-gradient(to bottom, #000 40%, transparent 70%);
+  position: absolute;
+  margin: auto;
+  inset: 0;
+  width: 100%;
+  height: 40vh;
+  min-height: 220px;
+  min-width: 220px;
+  filter: blur(0.4vh);
+  @media (max-height: 600px) {
+    top: -30%;
+  }
+}
+
+.sunset {
+  background: linear-gradient(
+    to bottom,
+    #ffea00 0%,
+    #f7049f 50%,
+    transparent 100%
+  );
+  position: absolute;
+  overflow: hidden;
+  inset: 0;
+  margin: auto;
+  width: 25vh;
+  height: 25vh;
+  min-height: 150px;
+  min-width: 150px;
+  border-radius: 50%;
+  filter: brightness(1.1) contrast(1.1);
+  animation: squiggly 0.4s linear infinite;
+  box-shadow:
+    0 0 1vh 0.1vh yellow,
+    0 0 2vh 4vh rgba(0, 0, 0, 0.23),
+    0 0 3vh 1.3vh #9100ff,
+    inset 0 0 5vh 3vh #9200ff;
+}
+.sunset .bar {
+  perspective: 15rem;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 40%
+  );
+}
+.sunset .bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #1f0b33 28%, transparent 28%);
+  background-size: auto 6%;
+  transform: rotateX(40deg) scaleX(1.5) translateZ(50px);
+  animation: grid 30s linear infinite;
+}
+
+.ground {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  perspective: 15rem;
+  width: 100%;
+  height: 50%;
+  @media (max-height: 600px) {
+    top: 30%;
+  }
+}
+.ground::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  bottom: -102px;
+  border-top: 1px solid white;
+  opacity: 0.3;
+  background: linear-gradient(to right, white 1px, transparent 1px),
+    linear-gradient(to bottom, white 1px, transparent 1px);
+  background-size:
+    2rem 125rem,
+    125rem 2rem;
+  filter: drop-shadow(0 0 2px red);
+  transform: rotateX(50deg) scaleX(2) translateZ(40px);
+  animation: grid 2.4s linear infinite;
+}
+.ground::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  bottom: -100px;
+  z-index: 9;
+  transform: rotateX(50deg) scaleX(2) translateZ(40px);
+  background: linear-gradient(to bottom, transparent 60%, #1f0b33 90%);
+}
+
+/* States */
+
+.wrap input:checked + .button .car .door-l {
+  transform: rotate(90deg) translate(66px, -20px);
+}
+.wrap input:checked + .button .car .door-r {
+  transform: rotate(-90deg) translate(-66px, -20px);
+}
+.wrap .area:hover .plate div:nth-child(1) {
+  transform: translateY(105%);
+}
+.wrap .area:hover .plate div:nth-child(2) {
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+.wrap .area:hover .button {
+  filter: contrast(1.1);
+}
+.wrap .area:active .button {
+  transform: translateY(10px);
+}
+.wheel {
+  transition: all 0.4s ease;
+}
+.wheel-l {
+  transform-origin: top right;
+}
+.wrap .area:active .wheel-l {
+  transform: rotate(8deg) translate(12px, 38px);
+}
+.wrap .area:active .wheel-r {
+  transform: rotate(-8deg) translate(-12px, 38px);
+}
+
+.wrap .area:hover .light-l,
+.wrap .area:hover .light-r,
+.wrap .area:hover .headlights {
+  opacity: 1;
+}
+
+.wrap .area:active .light-l,
+.wrap .area:active .light-r,
+.wrap .area:active .headlights {
+  animation: blink 0.4s linear;
+}
+
+@keyframes blink {
+  0%,
+  20% {
+    opacity: 1;
+  }
+  21% {
+    opacity: 0.2;
+  }
+  40%,
+  60% {
+    opacity: 1;
+  }
+  61%,
+  80% {
+    opacity: 0.2;
+  }
+  81% {
+    opacity: 1;
+  }
+}
+
+@keyframes squiggly {
+  0% {
+    filter: url("#squiggly-0");
+  }
+  25% {
+    filter: url("#squiggly-1");
+  }
+  50% {
+    filter: url("#squiggly-2");
+  }
+  75% {
+    filter: url("#squiggly-3");
+  }
+  100% {
+    filter: url("#squiggly-4");
+  }
+}
+
+@keyframes grid {
+  from {
+    background-position-y: -30rem;
+  }
+  to {
+    background-position-y: 0%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
